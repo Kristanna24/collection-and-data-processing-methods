@@ -3,12 +3,13 @@ from scrapy.utils.reactor import install_reactor
 from scrapy.utils.log import configure_logging
 from scrapy.utils.project import get_project_settings
 
+
 from avitoparser.spiders.avito import AvitoSpider
 
 if __name__ == '__main__':
     install_reactor('twisted.internet.asyncioreactor.AsyncioSelectorReactor')
     configure_logging()
     process = CrawlerProcess(get_project_settings())
-    # query = input()
-    process.crawl(AvitoSpider)
+    # process.crawl(AvitoSpider)
+    process.crawl(AvitoSpider, request='котята')
     process.start()

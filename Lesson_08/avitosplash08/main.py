@@ -29,5 +29,12 @@
 # в паука и функцию:
 # from scrapy_splash import SplashRequest
 
-# with open("cat1.html", 'wb') as f:
+# with open("cat1.json", 'wb') as f:
 #     f.write(response.body)
+
+# скачать фото
+# pip install pillow
+# setting:
+# IMAGES_STORE = 'photos'
+
+# scrapy runspider avito.py -o avitoparseritem.json

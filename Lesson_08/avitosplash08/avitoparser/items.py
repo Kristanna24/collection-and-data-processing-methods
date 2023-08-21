@@ -4,11 +4,20 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-from itemloaders.processors import TakeFirst, Compose
+from itemloaders.processors import TakeFirst, Compose, MapCompose
+
+
 
 class AvitoparserItem(scrapy.Item):
     _id = scrapy.Field()
-    name = scrapy.Field(input_processor=Compose(clean_name), output_processor=TakeFirst())
-    price = scrapy.Field(output_processor=TakeFirst())
-    photo = scrapy.Field()
-    product_link = scrapy.Field()
+    name = scrapy.Field(output_processor=TakeFirst())
+    photos = scrapy.Field(input_processor=MapCompose())
+    price = scrapy.Field(input_processor=Compose(), output_processor=TakeFirst())
+    description = scrapy.Field(output_processor=TakeFirst())
+    url = scrapy.Field(output_processor=TakeFirst())
+
+    # name = scrapy.Field()
+    # photos = scrapy.Field()
+    # price = scrapy.Field()
+    # description = scrapy.Field()
+    # url = scrapy.Field()
